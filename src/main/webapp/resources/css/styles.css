@@ -1,0 +1,56 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    background: white;
+}
+
+body{
+    margin:0;
+    padding: 0;
+    color: #4caf50;
+}
+
+.but{
+    margin: 25px;
+    text-align: center;
+    display:inline-block;
+}
+.hat{
+    width: 100%;
+    color: #4caf50;
+    font-family: Arial, sans-serif;
+    font-size: 50px;
+    text-align: center;
+    margin: 0;
+    border: 0;
+}
+.hat h6{margin: 0;}
+div {
+    width: 100%;
+    align: center;
+}
+
+.text{
+    background: #4caf50;
+    color: #070707; /* Цвет текста*/
+    padding: 0px; /* Поля вокруг текста*/
+    font-size: 10px;
+    font-family: cursive;
+}
+
+input{
+    background: #4caf50; /* Цвет фона */
+    border: 0px solid black; /* Параметры рамки */
+    box-shadow: 0 0 4px 3px #fff;
+    font-size: 15px;
+}
+table{
+    color: #4caf50;
+    border: 1px double #4caf50;
+    padding: 2px;
+    font-size: 20px;
+    width: 100%;
+}
+th,td{
+    font-size: 15px;
+}

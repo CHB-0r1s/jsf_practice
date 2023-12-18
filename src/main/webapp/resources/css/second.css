@@ -1,0 +1,491 @@
+#siteTable {
+    font-family: "Arial", sans-serif;
+    font-size: 14px;
+    border: 1px solid grey;
+    text-align: center;
+    width: 500px;
+    /*height: 500px;*/
+    max-height: 300px;
+    display: inline-block;
+    /*display: block;*/
+    /*overflow-x: scroll;*/
+    overflow-y: auto;
+    white-space: nowrap;
+    table-layout: fixed;
+}
+
+#siteTable th {
+    background: #7851A9;
+    border: 1px solid grey;
+    width: 20%;
+
+}
+
+#siteTable td {
+    border: 1px solid grey;
+}
+
+#formTableHeader, #tableTableHeader {
+    font-family: "Arial", sans-serif;
+    font-size: 14px;
+    border: 1px solid grey;
+    text-align: center;
+}
+
+canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+}
+
+
+.task-image {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.task-image--wrapper {
+    height: 500px;
+    width: 500px;
+    position: relative;
+}
+
+.task-image--field {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    z-index: 10;
+}
+
+.task-image--dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
+    margin-top: -4px;
+    border-radius: 50%;
+    background: blueviolet;
+    border: 1px solid #fff;
+    z-index: 3;
+}
+
+.task-image--dot._active {
+    background: seagreen;
+}
+
+.task-image--dot._inactive {
+    background: brown;
+}
+
+.task-image__quadrant {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+}
+
+.task-image__quadrant--first {
+    top: 0;
+    left: 50%;
+}
+
+.task-image__quadrant--second {
+    top: 50%;
+    left: 50%;
+}
+
+.task-image__quadrant--second .task-image__quadrant__figure {
+    position: absolute;
+    background: cornflowerblue;
+    top: -30%;
+    left: -54.5%;
+    transform: rotate(26.56deg);
+    height: 100%;
+    width: 80%;
+    right: 0;
+}
+
+.task-image__quadrant--third {
+    top: 50%;
+    left: 0;
+}
+
+.task-image__quadrant--third .task-image__quadrant__figure {
+    position: absolute;
+    background: cornflowerblue;
+    right: -40%;
+    top: -40%;
+    width: 80%;
+    height: 80%;
+    }
+
+.task-image__quadrant--fourth {
+    top: 0;
+    left: 0;
+}
+
+.task-image__quadrant--fourth .task-image__quadrant__figure {
+    position: absolute;
+    background: cornflowerblue;
+    width: 80%;
+    height: 40%;
+    bottom: 0;
+    right: 0;
+}
+
+.task-image__line {
+    background: #000;
+    position: absolute;
+    z-index: 2;
+}
+
+.task-image__line:before, .task-image__line:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background: #000;
+}
+
+.task-image__line__mark {
+    position: absolute;
+    background: #222;
+    font-size: 12px;
+}
+
+.task-image__line__mark .before {
+    position: absolute;
+    display: block;
+    width: 40px;
+    text-align: center;
+}
+
+.task-image__line--x {
+    width: 100%;
+    height: 2px;
+    left: 0;
+    top: calc(50% - 1px);
+}
+
+.task-image__line--x:before {
+    top: -4px;
+    right: 0;
+    transform: rotate(30deg);
+}
+
+.task-image__line--x:after {
+    top: 4px;
+    right: 0;
+    transform: rotate(-30deg);
+}
+
+.invisible {
+    display: none;
+}
+
+.task-image__line--x .task-image__line__mark {
+    top: -5px;
+    height: 11px;
+    width: 1px;
+}
+
+.task-image__line--x .task-image__line__mark .before {
+    top: -16px;
+    left: -20px;
+}
+
+.task-image__line--x .task-image__line__mark--top {
+    left: 10%;
+}
+
+.task-image__line--x .task-image__line__mark--htop {
+    left: 30%;
+}
+
+.task-image__line--x .task-image__line__mark--hbottom {
+    right: 30%;
+}
+
+.task-image__line--x .task-image__line__mark--bottom {
+    right: 10%;
+}
+
+.task-image__line--y {
+    width: 2px;
+    height: 100%;
+    left: calc(50% - 1px);
+    top: 0;
+}
+
+.task-image__line--y:before {
+    left: -11px;
+    top: 7px;
+    transform: rotate(120deg);
+}
+
+.task-image__line--y:after {
+    left: -3px;
+    top: 7px;
+    transform: rotate(-120deg);
+}
+
+.task-image__line--y .task-image__line__mark {
+    left: -5px;
+    width: 11px;
+    height: 1px;
+}
+
+.task-image__line--y .task-image__line__mark .before {
+    top: -5px;
+    left: 8px;
+}
+
+.task-image__line--y .task-image__line__mark--top {
+    top: 10%;
+}
+
+.task-image__line--y .task-image__line__mark--htop {
+    top: 30%;
+}
+
+.task-image__line--y .task-image__line__mark--hbottom {
+    bottom: 30%;
+}
+
+.task-image__line--y .task-image__line__mark--bottom {
+    bottom: 10%;
+}
+
+.interactive {
+    position: relative;
+}
+
+.image {
+    position: absolute;
+    top: 22%;
+    left: 36.6%;
+    transform: scale(2);
+    z-index: -1;
+}
+
+
+body {
+    font-family: "Roboto", monospace;
+}
+
+table {
+    width: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+/*HTML-страница должна иметь "шапку", содержащую ФИО студента, номер группы и новер варианта. При оформлении шапки необходимо явным образом задать шрифт (monospace), его цвет и размер в каскадной таблице стилей.*/
+thead {
+    font-size: 14px;
+    color: #000;
+    background: #4caf50;
+}
+
+#main-table tbody td {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+#main-table thead th {
+    width: 25%;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#main-table thead {
+    padding: 10px 15px 0;
+}
+
+#main-table thead > span {
+    font-weight: bold;
+}
+
+#main-table thead th div {
+    position: relative;
+    margin: 5% 7%;
+    cursor: pointer;
+}
+
+#main-table thead th div:before {
+    position: absolute;
+    left: 0;
+    /*content: '';*/
+    display: block;
+    bottom: -4px;
+    width: 100%;
+    background: #000;
+    height: 2px;
+    transition: 0.3s;
+    transform: scaleX(0);
+}
+
+#main-table thead th div:hover:before {
+    transform: scaleX(1);
+}
+
+/*Отступы элементов ввода должны задаваться в процентах.*/
+.task-input {
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+.task-input--buttons > button {
+    margin-bottom: 5px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.task-input--buttons > button._active {
+    background: cadetblue;
+}
+
+.task-input label {
+    display: block;
+}
+
+.task-image {
+    margin-top: 15px;
+}
+
+.task-controls {
+    vertical-align: top;
+}
+
+.task-input input {
+    width: 100%;
+    padding: 5px 15px;
+}
+
+.task-input label {
+    margin-bottom: 7px;
+}
+
+.task-input select {
+    width: 100%;
+    padding: 5px 15px;
+}
+
+td[data-trigger="input-submit"] > button {
+    outline: none;
+    border: none;
+    background: #e5c584;
+    padding: 5px 15px;
+    width: 100%;
+}
+
+#result-table {
+    padding: 30px;
+}
+
+#result-table td {
+    padding: 10px;
+}
+
+#result-table th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+._error {
+    margin-top: 5px;
+    color: red;
+    opacity: 0;
+}
+
+._error._active {
+    opacity: 1;
+}
+
+.task-input label {
+    font-size: 14px;
+}
+
+._error {
+    font-size: 14px;
+}
+
+.task-input-top {
+    vertical-align: top;
+}
+
+.task-input-bottom {
+    vertical-align: bottom;
+}
+
+._input {
+    outline: none;
+    line-height: 24px;
+}
+
+._button {
+    text-align: center;
+    border: 1px solid gray;
+    font-size: 20px;
+    box-shadow: 0 0 4px 5px gray;
+    background: #4caf50;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    cursor: pointer;
+    line-height: 50px;
+    padding: 0 20px;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin: 20px;
+    outline: none;
+    display: flex;
+}
+
+._button:hover:before {
+    animation: hoverFlare 1.5s infinite;
+}
+
+._button:before {
+    content: '';
+    transition: 3s ease-in-out;
+    height: 100%;
+    width: 20%;
+    position: absolute;
+    top: 0;
+    transform: skewX(-45deg);
+    left: -900px;
+}
+
+._button img {
+    height: 18px;
+    margin-right: 12px;
+}
+
+
+@keyframes hoverFlare {
+    0% {
+        left: -90px;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+/*# sourceMappingURL=interactive.css.map */

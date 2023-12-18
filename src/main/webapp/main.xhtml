@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+
+
+<h:head>
+    <title>Page with form</title>
+</h:head>
+<body>
+
+<table id="siteTalbe">
+    <tr>
+        <h:form id="form1">
+            <h:commandLink id="link" value="click" styleClass="invisible">
+                <f:ajax execute="form1" render="dots styles"/>
+            </h:commandLink>
+        </h:form>
+        <td>
+            <div class="interactive">
+
+                <div class="task-image">
+                    <h:form id="dots">
+                        <div class="task-image--wrapper">
+
+
+                            <ui:repeat value="#{mainBean.dataList}" var="point">
+                                <div class="dot invisible">
+                                    <div class="dot-x">#{point.x}</div>
+                                    <div class="dot-y">#{point.y}</div>
+                                    <div class="dot-r">#{point.r}</div>
+                                    <div class="dot-status">#{point.status}</div>
+                                </div>
+                            </ui:repeat>
+
+                            <div class="task-image__line task-image__line--x">
+                                <div class="task-image__line__mark task-image__line__mark--top">
+                                    <div class="before">#{mainBean.newData.r * 1.0}</div>
+                                </div>
+                                <div class="task-image__line__mark task-image__line__mark--bottom">
+                                    <div class="before">#{mainBean.newData.r * 1.0}</div>
+                                </div>
+                                <div class="task-image__line__mark task-image__line__mark--htop">
+                                    <div class="before">#{mainBean.newData.r * 0.5}</div>
+                                </div>
+                                <div class="task-image__line__mark task-image__line__mark--hbottom">
+                                    <div class="before">#{mainBean.newData.r * 0.5}</div>
+                                </div>
+                            </div>
+                            <div class="task-image__line task-image__line--y">
+                                <div class="task-image__line__mark task-image__line__mark--top">
+                                    <div class="before">#{mainBean.newData.r * 1.0}</div>
+                                </div>
+                                <div class="task-image__line__mark task-image__line__mark--bottom">
+                                    <div class="before">#{mainBean.newData.r * 1.0}</div>
+                                </div>
+                                <div class="task-image__line__mark task-image__line__mark--htop">
+                                    <div class="before">#{mainBean.newData.r * 0.5}</div>
+                                </div>
+                                <div class="task-image__line__mark task-image__line__mark--hbottom">
+                                    <div class="before">#{mainBean.newData.r * 0.5}</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </h:form>
+                    <img src="resources/img/image.svg" alt="#" class="image"/>
+                </div>
+            </div>
+        </td>
+        <td style="vertical-align: top">
+            <h:form id="form2" styleClass="invisible">
+                <h:panelGrid columns="1" style="margin-bottom: 10px">
+                    <p:outputLabel for="x1" value="Координата X:"/>
+                    <p:inputText id="x1" value="#{mainBean.newData.x}" required="true" validatorMessage="Ошибка...">
+                        <f:validator validatorId="yValidator"/>
+                    </p:inputText>
+                </h:panelGrid>
+                <h:panelGrid columns="1" style="margin-bottom: 10px">
+                    <p:outputLabel for="y1" value="Координата Y:"/>
+                    <p:inputText id="y1" value="#{mainBean.newData.y}" required="true" validatorMessage="Ошибка...">
+                        <f:validator validatorId="yValidator"/>
+                    </p:inputText>
+                </h:panelGrid>
+                <h:panelGrid columns="1" style="margin-bottom: 10px">
+                    <p:outputLabel for="r1" value="Координата R:"/>
+                    <p:inputText id="r1" value="#{mainBean.newData.r}" required="true" validatorMessage="Ошибка...">
+                        <f:validator validatorId="rValidator"/>
+                    </p:inputText>
+                </h:panelGrid>
+                <h:commandButton id="update" value="Добавить" action="#{mainBean.updateData()}">
+                    <f:ajax execute="form2" render="form2 dataTable dots xErrmsg yErrmsg rErrmsg"/>
+                </h:commandButton>
+                <h:commandButton id="send" value="Добавить" action="#{mainBean.createData()}">
+                    <f:ajax execute="form2" render="form dataTable dots xErrmsg yErrmsg rErrmsg"/>
+                </h:commandButton>
+            </h:form>
+
+            <h:form id="form">
+                <div>
+                    <h:panelGrid columns="1" style="margin-bottom: 10px">
+                        <p:outputLabel for="x" value="Координата X:"/>
+                        <p:inputText id="x" value="#{mainBean.newData.x}" required="true" validatorMessage="Ошибка...">
+                            <f:validator validatorId="xValidator"/>
+                            <f:ajax execute="form" render="dots"/>
+                        </p:inputText>
+                        <p:slider for="x" minValue="-4" maxValue="4" step="0.1" value="#{mainBean.newData.x}"
+                                  style="width: 14rem"/>
+                        <h:message for="x" id="xErrmsg" style="color:red"/>
+                    </h:panelGrid>
+                </div>
+                <div>
+                    <h:panelGrid columns="1" style="margin-bottom: 10px">
+                        <p:outputLabel for="y" value="Координата Y:"/>
+                        <p:inputText id="y" value="#{mainBean.newData.y}" required="true" validatorMessage="Ошибка...">
+                            <f:validator validatorId="yValidator"/>
+                        </p:inputText>
+                        <h:message for="y" id="yErrmsg" style="color:red"/>
+                    </h:panelGrid>
+                </div>
+                <div>
+                    <h:panelGrid columns="1" style="margin-bottom: 10px">
+                        <p:outputLabel for="r" value="Координата R:"/>
+                        <p:inputText id="r" value="#{mainBean.newData.r}" required="true" validatorMessage="Ошибка...">
+                            <f:validator validatorId="rValidator"/>
+                            <f:ajax execute="form" render="dots"/>
+                        </p:inputText>
+                        <p:slider for="r" minValue="1" maxValue="4" step="0.5" value="#{mainBean.newData.r}"
+                                  style="width: 14rem"/>
+                        <h:message for="r" id="rErrmsg" style="color:red"/>
+                    </h:panelGrid>
+                </div>
+                <h:commandButton id="sendButton" styleClass="_button" value="Добавить" action="#{mainBean.createData()}">
+                    <f:ajax execute="form" render="dataTable dots xErrmsg yErrmsg rErrmsg"/>
+                </h:commandButton>
+                <h:commandButton id="clearButton" styleClass="_button" value="Очистить" action="#{mainBean.clearData()}" immediate="true">
+                    <f:ajax execute="form" render="dataTable dots"/>
+                </h:commandButton>
+                <h:link styleClass="_button" outcome="index.xhtml">
+                    Назад
+                </h:link>
+            </h:form>
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+            <h:panelGroup>
+                <p:dataTable id="dataTable" value="#{mainBean.dataList}" var="data">
+                    <p:column>
+                        <f:facet name="header">Координата X</f:facet>
+                        #{data.x}
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Координата Y</f:facet>
+                        #{data.y}
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Радиус</f:facet>
+                        #{data.r}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Статус попадания</f:facet>
+                        #{data.status}
+                    </p:column>
+                </p:dataTable>
+            </h:panelGroup>
+        </td>
+    </tr>
+
+</table>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" type=""></script>
+<h:outputScript library="js" name="graphic.js"/>
+<h:outputStylesheet library="css" name="second.css"/>
+
+
+</body>
+</html>
