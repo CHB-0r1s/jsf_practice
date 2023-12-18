@@ -19,7 +19,7 @@ public class DB {
         }
         try {
             conn = DriverManager.getConnection("jdbc:postgresql://host.docker.internal:5433/web3", "postgres", "12345");
-            // Path for Docker
+            // Path for Docker-deploy
             PreparedStatement ps = conn.prepareStatement(
                     "CREATE TABLE IF NOT EXISTS \"hits\" (" +
                             "id SERIAL PRIMARY KEY," +
