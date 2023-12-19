@@ -10,27 +10,18 @@
     <ui:define name="head">
         <h:outputStylesheet library="css" name="index.css"/>
         <h:outputStylesheet library="css" name="second.css"/>
-        <title>Лабораторная работа #3 - Стартовая страница</title>
+        <title>Практическая страница #1</title>
     </ui:define>
 
     <ui:define name="main">
         <main class="main-container">
 
             <section class="main-container__item main-container__item_start">
-                <h2 class="visually-hidden">Стартовая страница</h2>
-
-                <p class="datetime">
-                    <span class="datetime__date"> <!-- Date from JS --> </span>
-                    <br/>
-                    <span class="datetime__time"> <!-- Time from JS --> </span>
-                </p>
+                <h2 class="visually-hidden">Практическая страница #1</h2>
 
                 <div>
-                    <h:link styleClass="_button" outcome="goToMain">
-                        На главную (3 лаба)
-                    </h:link>
-                    <h:link styleClass="_button" outcome="goToPage1">
-                        Практическое задание 1 (рубежка)
+                    <h:link styleClass="_button" outcome="goToIndex">
+                        На корневую страницу
                     </h:link>
                 </div>
             </section>
