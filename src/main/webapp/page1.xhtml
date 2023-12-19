@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition template="WEB-INF/components/header.xhtml">
 
@@ -15,7 +16,6 @@
 
     <ui:define name="main">
         <main class="main-container">
-
             <section class="main-container__item main-container__item_start">
                 <h2 class="visually-hidden">Практическая страница #1</h2>
 
@@ -24,11 +24,35 @@
                         На корневую страницу
                     </h:link>
                 </div>
+                <div class="news-line">
+                    <ui:repeat value="#{newsBean.arr}" var="news">
+                        <div class="news-header">
+                            #{news.author}
+                            #{news.title}
+                            #{news.date}
+                        </div>
+                        <div class="news-picture">
+                            #{news.annotation}
+
+                            <h:form>
+                                <h:outputText id="outputId" value="#{newsBean.showFullText(news)}"/>
+                                <h:commandLink id="msgId" value="Show"
+                                               action="#{newsBean.accessShowNews(news)}"
+                                               rendered="#{!newsBean.canShow(news)}"
+                                >
+                                    <f:ajax render="outputId" />
+                                </h:commandLink>
+                            </h:form>
+                        </div>
+                    </ui:repeat>
+                </div>
             </section>
         </main>
 
         <h:outputScript library="js" name="index.js"/>
     </ui:define>
+
+
 
 </ui:composition>
 
